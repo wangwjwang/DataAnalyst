@@ -207,7 +207,7 @@ DataFrame的sum()方法返回含有列小计的Series，传入axis=1将会按行
 
 接下来又试了0值填充、众数填充、中值填充，中值填充验证集得分更高。采用0值填充缺失值的方法，最终提交后得到score为16384.47。采用众数填充缺失值的方法，最终提交后得到score为16463.94。采用中值填充缺失值的方法，最终提交后得到score为16359.57，得分更高。
 
-##二. Categorical Variables#
+##三. Categorical Variables#
 
 dtype属性返回的数据类型可以判断是否为数值型变量还是分类变量。如果dtype返回object类型，证明该变量为分类变量。
 
@@ -254,7 +254,7 @@ Scikit-learn的OneHotEncoder类可以直接使用。
     OH_cols_valid = pd.DataFrame(OH_encoder.transform(X_valid[object_cols]))
 
 
-##三. Pipellines#
+##四. Pipellines#
 
 1.管道的优点：
 
@@ -276,7 +276,7 @@ Scikit-learn的OneHotEncoder类可以直接使用。
 
 使用pipeline类将数据预处理与模型进行绑定。使用pipeline可以只用一条语句就实现数据处理和模型建立。使用中可以直接使用未作数据预处理的验证集进行预测，pipeline可以自动进行数据预处理。
 
-##四. Cross-Validation#
+##五. Cross-Validation#
 
 机器学习是一个迭代过程，我们需要面对各种选择，选择哪些变量，采用哪种模型，为模型赋予哪些参数等等。通过验证集可以对模型进行评估。
 
@@ -306,7 +306,7 @@ scores = -1 * cross_val_score(my_pipeline, X, y,
 
 这里scoring评分参数选择的'neg_mean_absolute_error'，这里的mae再取负值，因为scikit-learn有个惯例，为统一度量，约定数值越大越好。mae值越大说明越不好，所以要取负值。为对不同模型进行评估，可以将不同阶段的分支取平均来评估。
 
-##五.XGBoost#
+##六.XGBoost#
 
 梯度提升（gradinet boosting）用于建立并优化模型是kaggle竞赛常用方法。
 
@@ -385,7 +385,7 @@ SGBoost是一个杰出的库，用于处理标准表格类数据，如我们在P
 最终成绩为14794.29，排名1924             
 
 
-##六. DataLeakage#
+##七. DataLeakage#
 
 当训练集中包含了目标的信息时，就会发生数据泄露，而模型应用于实际预测时并不可能得到类似的数据。这样的状况导致训练集（甚至验证集）的行能非常好，但在实际工作中性能却很差。数据泄露包括两种类型：**target leakage**（目标泄露）与**train-test contamination**（训练测试污染）
 
